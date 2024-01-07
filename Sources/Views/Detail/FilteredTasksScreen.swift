@@ -6,10 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct FilteredTasksScreen: View {
     
-    let tasks: [Task]
+    let predicate: Predicate<Task>
+    @Query var tasks: [Task]
+    
+    init(predicate: Predicate<Task>) {
+        self.predicate = predicate
+        _tasks = Query(filter: predicate, sort: Task.defaultSortDescriptors)
+    }
     
     var body: some View {
         List {
@@ -26,5 +33,8 @@ struct FilteredTasksScreen: View {
 }
 
 #Preview {
-    FilteredTasksScreen(tasks: [])
+    let today = Date.today
+    return FilteredTasksScreen(predicate: #Predicate { task in
+        task.dueDate == today
+    })
 }

@@ -6,17 +6,27 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct OverviewScreen: View {
     
-    static let today = Date.today
-    static let tomorrow = Date.tomorrow
+    @Query
+    private var allTasks: [Task]
     
-    let allTasks: [Task]
-    let pastDueTasks: [Task]
-    let todayTasks: [Task]
-    let tomorrowTasks: [Task]
-    let laterTasks: [Task]
+    @Query(filter: TaskPredicate.unfinishedPredicate, sort: Task.defaultSortDescriptors)
+    private var unfinishedTasks: [Task]
+    
+    @Query(filter: TaskPredicate.pastDuePredicate, sort: Task.defaultSortDescriptors)
+    private var pastDueTasks: [Task]
+    
+    @Query(filter: TaskPredicate.todayPredicate, sort: Task.defaultSortDescriptors)
+    private var todayTasks: [Task]
+    
+    @Query(filter: TaskPredicate.tomorrowPredicate, sort: Task.defaultSortDescriptors)
+    private var tomorrowTasks: [Task]
+    
+    @Query(filter: TaskPredicate.laterPredicate, sort: Task.defaultSortDescriptors)
+    private var laterTasks: [Task]
     
     @State private var searchText = ""
     
@@ -46,7 +56,7 @@ struct OverviewScreen: View {
         .animation(.snappy, value: allTasks)
         .listStyle(.plain)
         .overlay {
-            if allTasks.isEmpty {
+            if unfinishedTasks.isEmpty {
                 ContentUnavailableView("No Tasks", systemImage: "checkmark.circle")
             }
         }
@@ -57,5 +67,5 @@ struct OverviewScreen: View {
 }
 
 #Preview {
-    OverviewScreen(allTasks: [], pastDueTasks: [], todayTasks: [], tomorrowTasks: [], laterTasks: [])
+    OverviewScreen()
 }

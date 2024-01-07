@@ -11,9 +11,13 @@ import SwiftData
 
 struct TagsScreen: View {
     
-    let tasks: [Task]
+    @Query(sort: \Tag.creationDate) 
+    private var tags: [Tag]
     
-    @Query(sort: \Tag.creationDate) var tags: [Tag]
+    @Query(filter: #Predicate { task in
+        !task.tags.isEmpty
+    }, sort: Task.defaultSortDescriptors)
+    private var tasks: [Task]
     
     @State private var selection: [Tag] = []
     @State private var isEditing = false
@@ -88,5 +92,5 @@ struct TagsScreen: View {
 }
 
 #Preview {
-    TagsScreen(tasks: [])
+    TagsScreen()
 }

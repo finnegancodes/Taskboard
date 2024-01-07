@@ -22,6 +22,7 @@ struct ScreenLabel: View {
                     .frame(minWidth: 20)
                     .padding(.horizontal, 6)
                     .padding(.vertical, 2)
+                    .background(screen == .pastDue ? .red : .gray)
                     .clipShape(Capsule())
             }
             Image(systemName: "chevron.right")

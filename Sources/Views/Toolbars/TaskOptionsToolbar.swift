@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TaskOptionsToolbar: ViewModifier {
     
-    let finishedTasks: [Task]
+    static let today = Date.today
+    
+    @Query(filter: TaskPredicate.finishedPredicate)
+    var finishedTasks: [Task]
     
     @Environment(\.modelContext) private var modelContext
     @State private var showingDeleteFinishedConfirmation = false
@@ -48,7 +52,7 @@ struct TaskOptionsToolbar: ViewModifier {
 }
 
 extension View {
-    func taskOptionsToolbar(finishedTasks: [Task]) -> some View {
-        modifier(TaskOptionsToolbar(finishedTasks: finishedTasks))
+    func taskOptionsToolbar() -> some View {
+        modifier(TaskOptionsToolbar())
     }
 }

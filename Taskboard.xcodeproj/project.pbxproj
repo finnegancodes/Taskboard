@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6621FB042B49EC1E00FE1625 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6621FB032B49EC1E00FE1625 /* Bundle.swift */; };
 		664616A72B4B07D50050F78F /* taskboard_ic.png in Resources */ = {isa = PBXBuildFile; fileRef = 664616A62B4B07D50050F78F /* taskboard_ic.png */; };
+		664616AA2B4B104E0050F78F /* TaskPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664616A92B4B104E0050F78F /* TaskPredicate.swift */; };
 		667C8AFA2B48263F00EBF002 /* TaskEditForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667C8AD92B48263F00EBF002 /* TaskEditForm.swift */; };
 		667C8AFB2B48263F00EBF002 /* FilteredTasksScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667C8ADA2B48263F00EBF002 /* FilteredTasksScreen.swift */; };
 		667C8AFC2B48263F00EBF002 /* TagsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667C8ADB2B48263F00EBF002 /* TagsScreen.swift */; };
@@ -54,6 +55,7 @@
 		6621FB032B49EC1E00FE1625 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		664616A62B4B07D50050F78F /* taskboard_ic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taskboard_ic.png; sourceTree = "<group>"; };
 		664616A82B4B09680050F78F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		664616A92B4B104E0050F78F /* TaskPredicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPredicate.swift; sourceTree = "<group>"; };
 		667C8AD92B48263F00EBF002 /* TaskEditForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskEditForm.swift; sourceTree = "<group>"; };
 		667C8ADA2B48263F00EBF002 /* FilteredTasksScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilteredTasksScreen.swift; sourceTree = "<group>"; };
 		667C8ADB2B48263F00EBF002 /* TagsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsScreen.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				667C8AF82B48263F00EBF002 /* Navigator.swift */,
 				667C8AF92B48263F00EBF002 /* NotificationStatus.swift */,
 				66A5C01E2B487E1B0027CF2A /* AppData.swift */,
+				664616A92B4B104E0050F78F /* TaskPredicate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				667C8B0F2B48263F00EBF002 /* TagChip.swift in Sources */,
 				667C8B112B48263F00EBF002 /* UserNotifications.swift in Sources */,
 				667C8B102B48263F00EBF002 /* Date.swift in Sources */,
+				664616AA2B4B104E0050F78F /* TaskPredicate.swift in Sources */,
 				667C8B092B48263F00EBF002 /* SearchResultsView.swift in Sources */,
 				667C8B002B48263F00EBF002 /* OverviewScreen.swift in Sources */,
 				667C8AFD2B48263F00EBF002 /* ScreenLabel.swift in Sources */,
@@ -507,7 +511,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/Preview Content\"";
 				DEVELOPMENT_TEAM = Q7TAQU889U;
 				ENABLE_PREVIEWS = YES;
@@ -538,7 +542,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"Sources/Preview Content\"";
 				DEVELOPMENT_TEAM = Q7TAQU889U;
 				ENABLE_PREVIEWS = YES;
