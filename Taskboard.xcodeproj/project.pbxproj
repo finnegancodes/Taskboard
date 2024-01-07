@@ -53,6 +53,7 @@
 /* Begin PBXFileReference section */
 		6621FB032B49EC1E00FE1625 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		664616A62B4B07D50050F78F /* taskboard_ic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taskboard_ic.png; sourceTree = "<group>"; };
+		664616A82B4B09680050F78F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		667C8AD92B48263F00EBF002 /* TaskEditForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskEditForm.swift; sourceTree = "<group>"; };
 		667C8ADA2B48263F00EBF002 /* FilteredTasksScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilteredTasksScreen.swift; sourceTree = "<group>"; };
 		667C8ADB2B48263F00EBF002 /* TagsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsScreen.swift; sourceTree = "<group>"; };
@@ -223,6 +224,7 @@
 		66D741C42AACF174007B0080 = {
 			isa = PBXGroup;
 			children = (
+				664616A82B4B09680050F78F /* README.md */,
 				667C8B192B48266200EBF002 /* Resources */,
 				66D741CF2AACF174007B0080 /* Sources */,
 				66D741CE2AACF174007B0080 /* Products */,
