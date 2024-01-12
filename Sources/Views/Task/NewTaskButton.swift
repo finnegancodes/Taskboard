@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct NewTaskButton: ViewModifier {
     
-    @Environment(Navigator.self) var navigator: Navigator
+    @Environment(\.modelContext) private var modelContext
+    @Environment(Navigator.self) private var navigator: Navigator
     
     func body(content: Content) -> some View {
         content

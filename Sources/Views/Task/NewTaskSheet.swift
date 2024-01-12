@@ -10,9 +10,10 @@ import SwiftData
 
 struct NewTaskSheet: ViewModifier {
     
-    @Bindable var navigator: Navigator
-    
+    @Environment(Navigator.self) private var navigator
+        
     func body(content: Content) -> some View {
+        @Bindable var navigator = navigator
         content
             .sheet(isPresented: $navigator.showingNewTaskSheet) {
                 NewTaskSheetContent()
@@ -51,12 +52,15 @@ struct NewTaskSheetContent: View {
                         dismiss()
                         createTask()
                     }
+                    .disabled(taskContent.isEmpty)
                 }
             }
         }
     }
     
     private func createTask() {
+        guard !taskContent.isEmpty else { return }
+        
         let task = Task()
         task.content = taskContent
         task.dueDate = dueDate
@@ -66,7 +70,7 @@ struct NewTaskSheetContent: View {
 }
 
 extension View {
-    func newTaskSheet(navigator: Navigator) -> some View {
-        modifier(NewTaskSheet(navigator: navigator))
+    func newTaskSheet() -> some View {
+        modifier(NewTaskSheet())
     }
 }

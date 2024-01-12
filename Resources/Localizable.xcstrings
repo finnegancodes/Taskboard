@@ -4,7 +4,7 @@
     "" : {
 
     },
-    "[github.com](https://github.com)" : {
+    "[github.com](https://github.com/finnegancodes/Taskboard)" : {
 
     },
     "#%@" : {
@@ -188,7 +188,7 @@
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Importovanie úloh vymaže vaše už existujúce úlohy a tagy. Chcete pokračovať?"
+            "value" : "Importovanie úloh vymaže Vaše už existujúce úlohy a tagy. Chcete pokračovať?"
           }
         }
       }
@@ -403,6 +403,16 @@
         }
       }
     },
+    "Task cannot be empty" : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Úloha nemôže byť prázdna"
+          }
+        }
+      }
+    },
     "Taskboard" : {
       "localizations" : {
         "sk" : {
@@ -419,6 +429,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Úlohy importované"
+          }
+        }
+      }
+    },
+    "The task you were editing was reverted to its original content." : {
+      "localizations" : {
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zadanie úlohy, ktorú ste upravovali, sa vrátilo do pôvodného stavu."
           }
         }
       }

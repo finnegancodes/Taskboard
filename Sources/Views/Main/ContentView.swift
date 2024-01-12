@@ -21,12 +21,13 @@ struct ContentView: View {
     var allTasks: [Task]
     
     var body: some View {
+        @Bindable var navigator = self.navigator
         NavigationSplitView {
             ScreenList(navigator: navigator)
                 .navigationTitle("Taskboard")
                 .screenListToolbar()
         } detail: {
-            NavigationStack {
+            NavigationStack(path: $navigator.path) {
                 if let screen = navigator.selectedScreen {
                     ScreenView(screen: screen)
                         .navigationTitle(screen.title)
@@ -43,8 +44,9 @@ struct ContentView: View {
             }
         }
         .newTaskButton()
-        .newTaskSheet(navigator: navigator)
-        .settingsSheet(navigator: navigator)
+        .newTaskSheet()
+        .settingsSheet()
+        .taskEmptyAlert()
         .task(checkNotificationPermission)
         .onChange(of: scenePhase) { _, scenePhase in
             if scenePhase == .background {

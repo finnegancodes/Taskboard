@@ -10,9 +10,10 @@ import SwiftData
 
 struct SettingsSheet: ViewModifier {
     
-    @Bindable var navigator: Navigator
+    @Environment(Navigator.self) private var navigator
     
     func body(content: Content) -> some View {
+        @Bindable var navigator = navigator
         content
             .sheet(isPresented: $navigator.showingSettingsScreen) {
                 NavigationStack {
@@ -60,7 +61,7 @@ struct SettingsSheetContent: View {
             Section("App Info") {
                 LabeledContent("Version", value: "\(Bundle.main.releaseVersionNumber) (\(Bundle.main.buildVersionNumber))")
                 LabeledContent("Source") {
-                    Text("[github.com](https://github.com)")
+                    Text("[github.com](https://github.com/finnegancodes/Taskboard)")
                 }
                 LabeledContent("Made by", value: "Adam Oravec")
             }
@@ -98,7 +99,7 @@ struct SettingsSheetContent: View {
 }
 
 extension View {
-    func settingsSheet(navigator: Navigator) -> some View {
-        modifier(SettingsSheet(navigator: navigator))
+    func settingsSheet() -> some View {
+        modifier(SettingsSheet())
     }
 }
