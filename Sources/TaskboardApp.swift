@@ -10,7 +10,7 @@ import SwiftUI
 typealias AsyncTask = SwiftUI.Task
 
 @main
-struct Swifty_TasksApp: App {
+struct TaskboardApp: App {
     
     @State private var navigator = Navigator()
     

@@ -12,8 +12,15 @@ struct TaskPredicate {
     
     private init() {}
     
-    static let today = Date.today
-    static let tomorrow = Date.tomorrow
+    static var today: Date {
+        Date.today
+    }
+    
+    static var tomorrow: Date {
+        Date.tomorrow
+    }
+    
+    // MARK: --------------------------------------------------------
     
     static let unfinishedPredicate: Predicate<Task> = #Predicate { task in
         !task.isFinished
@@ -43,7 +50,7 @@ struct TaskPredicate {
         task.dueDate < today && !task.isFinished
     }
     
-    // -------------------------------------------------------------------
+    // MARK: --------------------------------------------------------
     
     static let todayUnfinishedPredicate: Predicate<Task> = #Predicate { task in
         task.dueDate == today && !task.isFinished

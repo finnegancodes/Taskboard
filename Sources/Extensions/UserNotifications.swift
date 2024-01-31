@@ -63,10 +63,10 @@ extension UNUserNotificationCenter {
         
         return await withCheckedContinuation { configuration in
             notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { success, error in
-                configuration.resume(returning: success)
                 if let error = error {
                     print(error.localizedDescription)
                 }
+                configuration.resume(returning: success)
             }
         }
     }

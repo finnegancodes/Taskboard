@@ -30,6 +30,10 @@ struct OverviewScreen: View {
     
     @State private var searchText = ""
     
+    var showEmptyLabel: Bool {
+        todayTasks.isEmpty && tomorrowTasks.isEmpty && laterTasks.isEmpty && unfinishedTasks.isEmpty
+    }
+    
     var body: some View {
         List {
             if !pastDueTasks.isEmpty {
@@ -53,16 +57,16 @@ struct OverviewScreen: View {
                 }
             }
         }
-        .animation(.snappy, value: allTasks)
         .listStyle(.plain)
         .overlay {
-            if unfinishedTasks.isEmpty {
+            if showEmptyLabel {
                 ContentUnavailableView("No Tasks", systemImage: "checkmark.circle")
             }
         }
         .searchable(text: $searchText) {
             SearchResultsView(searchText: searchText)
         }
+        .animation(.snappy, value: allTasks)
     }
 }
 

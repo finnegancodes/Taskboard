@@ -28,6 +28,8 @@ class SettingsSheetViewModel {
     var exportError: Error?
     var importError: Error?
     
+    // MARK: --------------------------------------------------------
+    
     var remindersEnabled = false {
         didSet {
             guard remindersEnabled && notificationStatus == .undefined else { return }

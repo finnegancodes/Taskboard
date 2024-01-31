@@ -438,7 +438,7 @@
         "sk" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zadanie úlohy, ktorú ste upravovali, sa vrátilo do pôvodného stavu."
+            "value" : "Zadanie úlohy, ktorú ste práve upravovali, sa vráti do pôvodného stavu."
           }
         }
       }
