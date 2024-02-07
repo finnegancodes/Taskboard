@@ -16,7 +16,7 @@ struct NewTaskSheet: ViewModifier {
         @Bindable var navigator = navigator
         content
             .sheet(isPresented: $navigator.showingNewTaskSheet) {
-                NewTaskSheetContent()
+                NewTaskSheetContent(openedFrom: navigator.selectedScreen)
             }
     }
 }
@@ -24,13 +24,21 @@ struct NewTaskSheet: ViewModifier {
 struct NewTaskSheetContent: View {
     
     @State private var taskContent = ""
-    @State private var dueDate = Date.today
+    @State private var dueDate: Date
     @State private var tagIDs: [PersistentIdentifier] = []
     
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
     @Query var tags: [Tag]
+    
+    init(openedFrom screen: Screen?) {
+        if screen == .tomorrow {
+            _dueDate = State(initialValue: Date.tomorrow)
+        } else {
+            _dueDate = State(initialValue: Date.today)
+        }
+    }
     
     var body: some View {
         NavigationStack {
