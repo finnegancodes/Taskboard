@@ -22,13 +22,13 @@ struct FilteredTasksScreen: View {
         List {
             TaskListerView(tasks: tasks)
         }
-        .animation(.snappy, value: tasks)
         .listStyle(.plain)
         .overlay {
             if tasks.isEmpty {
                 ContentUnavailableView("No Tasks", systemImage: "checkmark.circle")
             }
         }
+        .animation(.snappy, value: tasks)
     }
 }
 

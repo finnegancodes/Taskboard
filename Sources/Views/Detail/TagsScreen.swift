@@ -73,13 +73,13 @@ struct TagsScreen: View {
             .listRowSeparator(.hidden, edges: .all)
             TaskListerView(tasks: filteredTasks)
         }
-        .animation(.snappy, value: filteredTasks)
         .listStyle(.plain)
         .overlay {
             if filteredTasks.isEmpty && !selection.isEmpty {
                 ContentUnavailableView("No Tasks", systemImage: "checkmark.circle")
             }
         }
+        .animation(.snappy, value: filteredTasks)
     }
     
     private func toggle(tag: Tag) {

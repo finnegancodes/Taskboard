@@ -13,9 +13,6 @@ struct OverviewScreen: View {
     @Query
     private var allTasks: [Task]
     
-    @Query(filter: TaskPredicate.unfinishedPredicate, sort: Task.defaultSortDescriptors)
-    private var unfinishedTasks: [Task]
-    
     @Query(filter: TaskPredicate.pastDuePredicate, sort: Task.defaultSortDescriptors)
     private var pastDueTasks: [Task]
     
@@ -28,33 +25,41 @@ struct OverviewScreen: View {
     @Query(filter: TaskPredicate.laterPredicate, sort: Task.defaultSortDescriptors)
     private var laterTasks: [Task]
     
+    @Query(filter: TaskPredicate.unfinishedPredicate, sort: Task.defaultSortDescriptors)
+    private var unfinishedTasks: [Task]
+    
     @State private var searchText = ""
+    @State private var searchResultsEmpty = false
     
     var showEmptyLabel: Bool {
-        todayTasks.isEmpty && tomorrowTasks.isEmpty && laterTasks.isEmpty && unfinishedTasks.isEmpty
+        (!searchText.isEmpty && searchResultsEmpty) || (todayTasks.isEmpty && tomorrowTasks.isEmpty && laterTasks.isEmpty && unfinishedTasks.isEmpty)
     }
     
     var body: some View {
         List {
-            if !pastDueTasks.isEmpty {
-                Section(Screen.pastDue.title) {
-                    TaskListerView(tasks: pastDueTasks)
+            if searchText.isEmpty {
+                if !pastDueTasks.isEmpty {
+                    Section(Screen.pastDue.title) {
+                        TaskListerView(tasks: pastDueTasks)
+                    }
                 }
-            }
-            if !todayTasks.isEmpty {
-                Section(Screen.today.title) {
-                    TaskListerView(tasks: todayTasks)
+                if !todayTasks.isEmpty {
+                    Section(Screen.today.title) {
+                        TaskListerView(tasks: todayTasks)
+                    }
                 }
-            }
-            if !tomorrowTasks.isEmpty {
-                Section(Screen.tomorrow.title) {
-                    TaskListerView(tasks: tomorrowTasks)
+                if !tomorrowTasks.isEmpty {
+                    Section(Screen.tomorrow.title) {
+                        TaskListerView(tasks: tomorrowTasks)
+                    }
                 }
-            }
-            if !laterTasks.isEmpty {
-                Section(Screen.later.title) {
-                    TaskListerView(tasks: laterTasks)
+                if !laterTasks.isEmpty {
+                    Section(Screen.later.title) {
+                        TaskListerView(tasks: laterTasks)
+                    }
                 }
+            } else {
+                SearchResultsView(searchText: searchText, isEmpty: $searchResultsEmpty)
             }
         }
         .listStyle(.plain)
@@ -63,9 +68,7 @@ struct OverviewScreen: View {
                 ContentUnavailableView("No Tasks", systemImage: "checkmark.circle")
             }
         }
-        .searchable(text: $searchText) {
-            SearchResultsView(searchText: searchText)
-        }
+        .searchable(text: $searchText)
         .animation(.snappy, value: allTasks)
     }
 }
