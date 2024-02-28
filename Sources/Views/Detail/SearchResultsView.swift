@@ -24,11 +24,14 @@ struct SearchResultsView: View {
     }
     
     var body: some View {
-        TaskListerView(tasks: tasks)
-            .foregroundStyle(.primary)
-            .onChange(of: tasks) { _, tasks in
-                isEmpty = tasks.isEmpty
-            }
+        Section {
+            TaskListerView(tasks: tasks)
+        }
+        .animation(.snappy, value: tasks)
+        .foregroundStyle(.primary)
+        .onChange(of: tasks) { _, tasks in
+            isEmpty = tasks.isEmpty
+        }
     }
 }
 

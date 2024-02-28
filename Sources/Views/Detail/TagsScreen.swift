@@ -21,7 +21,7 @@ struct TagsScreen: View {
     
     @State private var selection: [Tag] = []
     @State private var isEditing = false
-    
+        
     var filteredTasks: [Task] {
         if selection.isEmpty {
             return tasks

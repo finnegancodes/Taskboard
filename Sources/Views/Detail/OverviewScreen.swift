@@ -10,9 +10,6 @@ import SwiftData
 
 struct OverviewScreen: View {
     
-    @Query
-    private var allTasks: [Task]
-    
     @Query(filter: TaskPredicate.pastDuePredicate, sort: Task.defaultSortDescriptors)
     private var pastDueTasks: [Task]
     
@@ -33,6 +30,10 @@ struct OverviewScreen: View {
     
     var showEmptyLabel: Bool {
         (!searchText.isEmpty && searchResultsEmpty) || (todayTasks.isEmpty && tomorrowTasks.isEmpty && laterTasks.isEmpty && unfinishedTasks.isEmpty)
+    }
+    
+    var allTasks: [Task] {
+        pastDueTasks + todayTasks + tomorrowTasks + laterTasks + unfinishedTasks
     }
     
     var body: some View {
@@ -68,8 +69,8 @@ struct OverviewScreen: View {
                 ContentUnavailableView("No Tasks", systemImage: "checkmark.circle")
             }
         }
-        .searchable(text: $searchText)
         .animation(.snappy, value: allTasks)
+        .searchable(text: $searchText)
     }
 }
 
